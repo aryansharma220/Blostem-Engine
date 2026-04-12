@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-edge: #02050a;
+  --bg-center: #050b12;
+  --bg-accent: #0f1a27;
+  --text-primary: #e6edf3;
+  --text-muted: #9fb0c2;
+  --brand-cyan: #79e8ff;
+  --brand-ice: #d9fbff;
+  --brand-deep: #0d1e2d;
+  --font-body: "Source Serif 4", "Georgia", "Times New Roman", serif;
+  --font-display: "Cormorant Garamond", "Garamond", "Times New Roman", serif;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-edge);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(121, 232, 255, 0.08), transparent 24%),
+    radial-gradient(circle at 80% 16%, rgba(121, 232, 255, 0.06), transparent 20%),
+    linear-gradient(180deg, rgba(4, 8, 12, 0.98), rgba(7, 13, 20, 0.98)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: auto, auto, auto, 40px 40px, 40px 40px;
+  color: var(--text-primary);
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.18) 76%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 4px);
+  mix-blend-mode: soft-light;
+  opacity: 0.12;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+.brand-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  line-height: 1.06;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+p,
+label,
+button,
+input,
+select,
+textarea,
+li,
+td,
+th,
+span {
+  font-family: var(--font-body);
+}
+
+.brand-body {
+  font-family: var(--font-body);
+}
+
+.surface-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  background:
+    linear-gradient(180deg, rgba(8, 14, 20, 0.84), rgba(8, 14, 20, 0.56)),
+    linear-gradient(135deg, rgba(103, 232, 249, 0.06), rgba(148, 163, 184, 0.02));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset,
+    0 24px 90px rgba(2, 6, 23, 0.36);
+}
+
+.surface-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 30%, transparent 72%, rgba(255, 255, 255, 0.03)),
+    radial-gradient(circle at top right, rgba(103, 232, 249, 0.08), transparent 28%);
+}
+
+.surface-soft {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  background: linear-gradient(180deg, rgba(8, 14, 20, 0.64), rgba(8, 14, 20, 0.36));
+}
+
+.surface-soft::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 40%, transparent 70%, rgba(255, 255, 255, 0.02));
+}
+
+.surface-accent {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(103, 232, 249, 0.18);
+  background:
+    linear-gradient(135deg, rgba(5, 11, 18, 0.82), rgba(5, 11, 18, 0.5)),
+    radial-gradient(circle at top right, rgba(103, 232, 249, 0.12), transparent 34%);
+}
+
+.surface-input {
+  background: rgba(2, 6, 10, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  color: #fff;
+}
+
+.surface-input:focus {
+  border-color: rgba(103, 232, 249, 0.45);
+  box-shadow: 0 0 0 4px rgba(103, 232, 249, 0.12);
+}
+
+.state-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(121, 232, 255, 0.16);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(8, 14, 20, 0.82), rgba(8, 14, 20, 0.46)),
+    radial-gradient(circle at top right, rgba(121, 232, 255, 0.1), transparent 40%);
+}
+
+.state-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 35%, transparent 70%, rgba(255, 255, 255, 0.03));
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.04);
+  }
+}
+
+@keyframes drift-reverse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(0, 16px, 0) scale(0.98);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes breath {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.86;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes orbit-slow {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(8deg) scale(1.02);
+  }
+}
+
+.animate-drift-slow {
+  animation: drift 11s ease-in-out infinite;
+}
+
+.animate-drift-reverse {
+  animation: drift-reverse 13s ease-in-out infinite;
+}
+
+.animate-reveal {
+  animation: reveal 0.7s ease-out both;
+}
+
+.animate-orbit-slow {
+  animation: orbit-slow 16s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.4s linear infinite;
+}
+
+.animate-breath {
+  animation: breath 2.8s ease-in-out infinite;
+}
+

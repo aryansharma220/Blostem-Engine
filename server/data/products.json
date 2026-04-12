@@ -1,0 +1,219 @@
+[
+  {
+    "id": "FD001",
+    "category": "fixed_deposit",
+    "name": "SafeBank 12M FD",
+    "returnRate": 7.2,
+    "tenureMonths": 12,
+    "liquidityScore": 5,
+    "riskTag": "low",
+    "minAmount": 10000,
+    "goalFitTags": ["short_term", "capital_preservation"]
+  },
+  {
+    "id": "FD002",
+    "category": "fixed_deposit",
+    "name": "PrimeBank 24M FD",
+    "returnRate": 7.9,
+    "tenureMonths": 24,
+    "liquidityScore": 4,
+    "riskTag": "low",
+    "minAmount": 25000,
+    "goalFitTags": ["wealth_growth", "capital_preservation"]
+  },
+  {
+    "id": "FD003",
+    "category": "fixed_deposit",
+    "name": "FlexiBank Sweep FD",
+    "returnRate": 6.8,
+    "tenureMonths": 9,
+    "liquidityScore": 8,
+    "riskTag": "low",
+    "minAmount": 5000,
+    "goalFitTags": ["short_term", "emergency_fund"]
+  },
+  {
+    "id": "FD004",
+    "category": "fixed_deposit",
+    "name": "SilverSecure Senior FD",
+    "returnRate": 8,
+    "tenureMonths": 30,
+    "liquidityScore": 3,
+    "riskTag": "low",
+    "minAmount": 20000,
+    "goalFitTags": ["income_generation", "capital_preservation"]
+  },
+  {
+    "id": "FD005",
+    "category": "fixed_deposit",
+    "name": "QuickAccess FD",
+    "returnRate": 6.6,
+    "tenureMonths": 6,
+    "liquidityScore": 9,
+    "riskTag": "low",
+    "minAmount": 3000,
+    "goalFitTags": ["emergency_fund", "short_term"]
+  },
+  {
+    "id": "RD001",
+    "category": "recurring_deposit",
+    "name": "MonthlySave 12M RD",
+    "returnRate": 7,
+    "tenureMonths": 12,
+    "liquidityScore": 6,
+    "riskTag": "low",
+    "minAmount": 2000,
+    "goalFitTags": ["short_term", "goal_based_saving"]
+  },
+  {
+    "id": "RD002",
+    "category": "recurring_deposit",
+    "name": "SteadyGrow 24M RD",
+    "returnRate": 7.4,
+    "tenureMonths": 24,
+    "liquidityScore": 5,
+    "riskTag": "low",
+    "minAmount": 3000,
+    "goalFitTags": ["goal_based_saving", "wealth_growth"]
+  },
+  {
+    "id": "RD003",
+    "category": "recurring_deposit",
+    "name": "Starter RD Lite",
+    "returnRate": 6.9,
+    "tenureMonths": 10,
+    "liquidityScore": 7,
+    "riskTag": "low",
+    "minAmount": 1000,
+    "goalFitTags": ["short_term", "goal_based_saving"]
+  },
+  {
+    "id": "RD004",
+    "category": "recurring_deposit",
+    "name": "FutureFund 36M RD",
+    "returnRate": 7.7,
+    "tenureMonths": 36,
+    "liquidityScore": 4,
+    "riskTag": "low",
+    "minAmount": 4000,
+    "goalFitTags": ["wealth_growth", "goal_based_saving"]
+  },
+  {
+    "id": "RD005",
+    "category": "recurring_deposit",
+    "name": "FlexiStep RD",
+    "returnRate": 7.1,
+    "tenureMonths": 15,
+    "liquidityScore": 8,
+    "riskTag": "low",
+    "minAmount": 1500,
+    "goalFitTags": ["liquidity_focus", "goal_based_saving"]
+  },
+  {
+    "id": "DMF001",
+    "category": "debt_mutual_fund",
+    "name": "Income Shield Debt Fund",
+    "returnRate": 8.1,
+    "tenureMonths": 18,
+    "liquidityScore": 8,
+    "riskTag": "medium",
+    "minAmount": 5000,
+    "goalFitTags": ["wealth_growth", "short_term"]
+  },
+  {
+    "id": "DMF002",
+    "category": "debt_mutual_fund",
+    "name": "Short Duration Debt Plus",
+    "returnRate": 8.4,
+    "tenureMonths": 14,
+    "liquidityScore": 9,
+    "riskTag": "medium",
+    "minAmount": 2000,
+    "goalFitTags": ["short_term", "liquidity_focus"]
+  },
+  {
+    "id": "DMF003",
+    "category": "debt_mutual_fund",
+    "name": "Stability Debt Opportunities",
+    "returnRate": 7.8,
+    "tenureMonths": 20,
+    "liquidityScore": 7,
+    "riskTag": "medium",
+    "minAmount": 10000,
+    "goalFitTags": ["wealth_growth", "income_generation"]
+  },
+  {
+    "id": "DMF004",
+    "category": "debt_mutual_fund",
+    "name": "Floating Yield Fund",
+    "returnRate": 8.9,
+    "tenureMonths": 22,
+    "liquidityScore": 6,
+    "riskTag": "medium",
+    "minAmount": 5000,
+    "goalFitTags": ["wealth_growth", "income_generation"]
+  },
+  {
+    "id": "DMF005",
+    "category": "debt_mutual_fund",
+    "name": "Liquid Debt Access",
+    "returnRate": 7.3,
+    "tenureMonths": 4,
+    "liquidityScore": 10,
+    "riskTag": "medium",
+    "minAmount": 1000,
+    "goalFitTags": ["liquidity_focus", "short_term"]
+  },
+  {
+    "id": "CB001",
+    "category": "corporate_bond",
+    "name": "Bluechip Corporate Bond",
+    "returnRate": 8.6,
+    "tenureMonths": 30,
+    "liquidityScore": 5,
+    "riskTag": "medium",
+    "minAmount": 25000,
+    "goalFitTags": ["income_generation", "wealth_growth"]
+  },
+  {
+    "id": "CB002",
+    "category": "corporate_bond",
+    "name": "Listed Bond Select",
+    "returnRate": 8.2,
+    "tenureMonths": 18,
+    "liquidityScore": 7,
+    "riskTag": "medium",
+    "minAmount": 15000,
+    "goalFitTags": ["income_generation", "liquidity_focus"]
+  },
+  {
+    "id": "CB003",
+    "category": "corporate_bond",
+    "name": "Structured Bond Edge",
+    "returnRate": 9.4,
+    "tenureMonths": 40,
+    "liquidityScore": 3,
+    "riskTag": "high",
+    "minAmount": 50000,
+    "goalFitTags": ["wealth_growth"]
+  },
+  {
+    "id": "EDGE001",
+    "category": "debt_mutual_fund",
+    "name": "Data Sparse Debt Fund",
+    "returnRate": 8.1,
+    "riskTag": "medium",
+    "minAmount": 2500,
+    "goalFitTags": []
+  },
+  {
+    "id": "EDGE002",
+    "category": "fixed_deposit",
+    "name": "Legacy Record FD",
+    "tenureMonths": 18,
+    "liquidityScore": 6,
+    "riskTag": "low",
+    "minAmount": 7000,
+    "goalFitTags": ["capital_preservation"]
+  }
+]
