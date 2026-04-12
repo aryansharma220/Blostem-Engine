@@ -132,15 +132,14 @@ export default function ResultsPage({
   return (
     <section className="grid gap-5">
       <div className="grid gap-5 lg:grid-cols-[1.7fr_1fr] lg:items-start">
-        <TopRecommendationCard recommendation={topResult} alternatives={alternatives} userProfile={userProfile} />
+        <TopRecommendationCard recommendation={topResult} alternatives={alternatives} userProfile={userProfile} products={products} />
 
-        <aside className="surface-accent relative rounded-[2rem] p-5 text-white shadow-2xl shadow-cyan-950/10 backdrop-blur-2xl animate-reveal lg:sticky lg:top-5">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.14),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.05),transparent_44%,transparent_68%,rgba(255,255,255,0.02))]" />
+        <aside className="surface-accent tone-cyan section-rail-cyan relative rounded-[2rem] p-5 text-white animate-reveal lg:sticky lg:top-5">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">[ Decision Signal ]</p>
             <h2 className="mt-2 text-4xl font-semibold">{metadata?.topScore ?? recommendations[0].score}</h2>
-            <p className="mt-1 text-sm text-slate-300">Products evaluated: {metadata?.totalProductsEvaluated}</p>
-            <p className="text-sm text-slate-300">Segment: {segmentLabel}</p>
+            <p className="mt-1 text-sm text-[#9fb3c8]">Products evaluated: {metadata?.totalProductsEvaluated}</p>
+            <p className="text-sm text-[#9fb3c8]">Segment: {segmentLabel}</p>
           </div>
 
           <p className="mt-4 rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-3 py-2 text-xs text-cyan-100">
@@ -150,7 +149,7 @@ export default function ResultsPage({
           <button
             type="button"
             onClick={handleDownloadPdf}
-            className="mt-4 w-full rounded-full border border-white/10 bg-white/10 px-5 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
+            className="mt-4 w-full rounded-full border border-cyan-500/20 bg-[#0b1117] px-5 py-2 text-sm font-semibold text-white transition-all duration-300 ease-in-out hover:border-cyan-400/40"
             aria-label="Export recommendation report as PDF"
           >
             <span className="inline-flex items-center gap-2">
@@ -161,9 +160,9 @@ export default function ResultsPage({
         </aside>
       </div>
 
-      <section className="surface-shell rounded-[2rem] p-5">
-        <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">[ Why This Was Selected ]</p>
-        <p className="mt-2 text-sm text-slate-300">
+      <section className="section-rail-cyan rounded-[2rem] px-3 py-2">
+        <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">[ DECISION RATIONALE ]</p>
+        <p className="mt-2 text-sm text-[#9fb3c8]">
           This system ranks financial products using a weighted scoring model based on user intent.
         </p>
         <p className="mt-2 rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-3 py-2 font-mono text-xs text-cyan-100">
@@ -178,15 +177,15 @@ export default function ResultsPage({
         </div>
       </section>
 
-      <section className="surface-shell rounded-[2rem] p-5">
+      <section className="surface-soft tone-green section-rail-green rounded-[2rem] p-5">
         <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">[ Alternative Options ]</p>
-        <p className="mt-2 text-sm text-slate-300">Second and third best options for comparison.</p>
+        <p className="mt-2 text-sm text-[#9fb3c8]">Second and third best options for comparison.</p>
         <div className="mt-4">
           <RecommendationCards recommendations={alternatives} rankOffset={1} compact />
         </div>
       </section>
 
-      <details className="surface-shell rounded-[2rem] p-5" open>
+      <details className="surface-shell tone-cyan section-rail-cyan rounded-[2rem] p-5" open>
         <summary className="cursor-pointer text-white font-semibold">[ What If Scenario ]</summary>
         <div className="mt-4 grid gap-4">
           <CompareScenarioPanel
@@ -219,7 +218,7 @@ export default function ResultsPage({
         </div>
       </details>
 
-      <details className="surface-shell rounded-[2rem] p-5">
+      <details className="section-rail-warning rounded-[2rem] p-3">
         <summary className="cursor-pointer text-white font-semibold">[ Dataset / Product List ]</summary>
         <div className="mt-4">
           <Suspense fallback={<SurfaceFallback />}>
@@ -228,13 +227,13 @@ export default function ResultsPage({
         </div>
       </details>
 
-      <details className="surface-shell rounded-[2rem] p-5">
+      <details className="surface-shell tone-green section-rail-green rounded-[2rem] p-5">
         <summary className="cursor-pointer text-white font-semibold">[ System Analysis ]</summary>
         <div className="mt-4">
           <button
             type="button"
             onClick={() => setShowInsights((prev) => !prev)}
-            className="rounded-full border border-white/10 bg-white/10 px-5 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
+            className="rounded-full border border-cyan-500/20 bg-[#0b1117] px-5 py-2 text-sm font-semibold text-white transition-all duration-300 ease-in-out hover:border-cyan-400/40"
             aria-label="Toggle insights analytics section"
           >
             {showInsights ? "Hide Insights" : "Load Insights Analytics"}

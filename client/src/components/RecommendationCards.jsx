@@ -10,7 +10,7 @@ export default function RecommendationCards({ recommendations, rankOffset = 0, c
       {recommendations.map((item, index) => (
         <article
           key={item.productId}
-          className={`surface-shell rounded-[2rem] border-l-4 border-cyan-300/70 p-5 shadow-2xl shadow-cyan-950/10 backdrop-blur-2xl animate-reveal transition-transform duration-300 hover:-translate-y-1 ${compact ? "lg:max-w-3xl" : ""}`}
+          className={`surface-shell rounded-[2rem] border-l-4 p-5 animate-reveal transition-all duration-300 ease-in-out hover:-translate-y-1 ${index % 2 === 0 ? "tone-neutral border-cyan-400/70" : "tone-cyan border-cyan-500/50"} ${compact ? "lg:max-w-3xl" : ""}`}
           style={{ animationDelay: `${index * 110}ms` }}
         >
           <div className="flex items-center justify-between gap-3">
@@ -21,23 +21,23 @@ export default function RecommendationCards({ recommendations, rankOffset = 0, c
               </p>
               <h3 className="mt-2 text-2xl font-semibold text-white">{item.productName}</h3>
             </div>
-            <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200 backdrop-blur-sm">
+            <span className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300">
               {formatCategory(item.category)}
             </span>
           </div>
 
           <div className="mt-4 flex items-end gap-3">
-            <p className="text-4xl font-semibold text-cyan-100">{item.score}</p>
-            <p className="pb-1 text-xs uppercase tracking-[0.3em] text-slate-400">Decision score</p>
+            <p className={`text-4xl font-semibold ${index % 2 === 0 ? "text-cyan-100" : "text-[#00ff9f]"}`}>{item.score}</p>
+            <p className="pb-1 text-xs uppercase tracking-[0.3em] text-[#9fb3c8]">Decision score</p>
           </div>
 
-          <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-200">
-            <p className="text-xs uppercase tracking-[0.25em] text-cyan-200">Reason</p>
+          <div className="mt-4 rounded-2xl border border-cyan-500/20 bg-[#0b1117] p-4 text-sm text-[#e6edf3]">
+            <p className="text-xs uppercase tracking-[0.25em] text-cyan-400">Reason</p>
             <p className="mt-2">{item.explanation}</p>
           </div>
 
-          <div className="mt-3 rounded-2xl border border-amber-400/10 bg-amber-400/10 p-3 text-xs leading-5 text-amber-100 backdrop-blur-sm">
-            <p className="font-semibold uppercase tracking-[0.25em] text-amber-200">Trade-off</p>
+          <div className="mt-3 rounded-2xl border border-[#ffb020]/20 bg-[#ffb020]/10 p-3 text-xs leading-5 text-[#ffb020]">
+            <p className="font-semibold uppercase tracking-[0.25em] text-[#ffb020]">Trade-off</p>
             <p className="mt-1">{item.tradeOff}</p>
           </div>
         </article>

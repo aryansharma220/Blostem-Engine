@@ -56,14 +56,14 @@ export default function ScoreTransparencyPanel({ baseline, comparison, weights }
     <section className="surface-shell grid gap-4 rounded-[2rem] p-5">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">[ Decision bars ]</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">[ WEIGHTED SIGNAL CONTRIBUTION ]</p>
           <h3 className="mt-2 text-xl font-semibold text-white">What the engine weighted</h3>
-          <p className="mt-1 text-sm text-slate-300">Plain language by default, with technical values on demand.</p>
+          <p className="mt-1 text-sm text-[#9fb3c8]">Plain language by default, with technical values on demand.</p>
         </div>
         <button
           type="button"
           onClick={() => setTechnicalView((prev) => !prev)}
-          className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
+          className="rounded-full border border-cyan-500/20 bg-[#0b1117] px-4 py-2 text-sm font-semibold text-[#e6edf3] transition-all duration-300 ease-in-out hover:border-cyan-400/40"
           aria-label="Toggle technical score explanation view"
         >
           {technicalView ? "Plain view" : "Technical view"}
@@ -78,37 +78,37 @@ export default function ScoreTransparencyPanel({ baseline, comparison, weights }
           const fillWidth = Math.max(8, Math.min(100, (baselineValue / field.weight) * 100));
 
           return (
-            <article key={field.key} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <article key={field.key} className="rounded-2xl border border-cyan-500/20 bg-[#0b1117] p-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="text-sm font-semibold text-white">{field.label}</p>
                 <p className="text-xs uppercase tracking-[0.25em] text-cyan-200">Weight {field.weight}%</p>
               </div>
 
               <div className="mt-3 space-y-2">
-                <div className="flex items-center justify-between text-xs text-slate-400">
+                <div className="flex items-center justify-between text-xs text-[#9fb3c8]">
                   <span>Signal strength</span>
                   <span>{baselineValue.toFixed(2)}</span>
                 </div>
-                <div className="h-2 overflow-hidden rounded-full bg-slate-900/80">
+                <div className="h-1.5 overflow-hidden rounded bg-gray-800">
                   <div
-                    className="h-full rounded-full bg-cyan-400 transition-all duration-500"
+                    className="h-1.5 rounded bg-cyan-400 transition-all duration-300 ease-in-out"
                     style={{ width: `${fillWidth}%` }}
                   />
                 </div>
               </div>
 
               {technicalView ? (
-                <div className="mt-3 grid gap-2 text-sm text-slate-300 sm:grid-cols-3">
+                <div className="mt-3 grid gap-2 text-sm text-[#9fb3c8] sm:grid-cols-3">
                   <p>Baseline: <span className="text-white">{baselineValue.toFixed(2)}</span></p>
                   <p>Scenario B: <span className="text-white">{comparisonValue.toFixed(2)}</span></p>
-                  <p className={delta >= 0 ? "text-emerald-300" : "text-rose-300"}>Delta: {formatDelta(delta)}</p>
+                  <p className={delta >= 0 ? "text-cyan-300" : "text-[#ffb020]"}>Delta: {formatDelta(delta)}</p>
                 </div>
               ) : (
-                <div className="mt-3 grid gap-2 text-sm text-slate-300">
+                <div className="mt-3 grid gap-2 text-sm text-[#9fb3c8]">
                   <p>
                     This factor {explainDelta(delta)} from <span className="text-white">{baselineValue.toFixed(2)}</span> to <span className="text-white">{comparisonValue.toFixed(2)}</span>.
                   </p>
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">Impact on total score: {field.weight}%</p>
+                  <p className="text-xs uppercase tracking-[0.25em] text-cyan-400">Impact on total score: {field.weight}%</p>
                 </div>
               )}
             </article>

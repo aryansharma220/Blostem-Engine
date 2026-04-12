@@ -22,6 +22,56 @@ function driverLabel(driver) {
   return labels[driver] || humanizeValue(driver);
 }
 
+function buildSystemInsight(recommendation, userProfile) {
+  if (userProfile?.liquidityNeed === "high") {
+    return "Users with high liquidity preference are consistently matched with short-duration debt instruments over fixed deposits due to better flexibility-adjusted returns.";
+  }
+
+  if (userProfile?.riskLevel === "low") {
+    return "Low-risk users are systematically routed to instruments that preserve capital stability while maintaining meaningful liquidity and return efficiency.";
+  }
+
+  return `The engine prioritizes ${driverLabel(getDominantDriver(recommendation.breakdown))} as the primary decision signal for this profile segment.`;
+}
+
+function buildBehavioralSegment(userProfile) {
+  if (userProfile?.liquidityNeed === "high" && userProfile?.riskLevel === "low") {
+    return "Behavioral segment: safety-first accumulator";
+  }
+
+  if (userProfile?.liquidityNeed === "high") {
+    return "Behavioral segment: flexibility-led allocator";
+  }
+
+  if (userProfile?.riskLevel === "high") {
+    return "Behavioral segment: return-seeking explorer";
+  }
+
+  return "Behavioral segment: balanced planner";
+}
+
+function buildDatasetPatterns(products = []) {
+  if (!products.length) {
+    return ["Dataset pattern: limited catalogue context available."];
+  }
+
+  const shortDurationCount = products.filter((product) => (product.tenureMonths ?? 0) <= 12).length;
+  const highLiquidityCount = products.filter((product) => (product.liquidityScore ?? 0) >= 8).length;
+  const categoryCounts = products.reduce((accumulator, product) => {
+    const key = product.category || "unknown";
+    accumulator[key] = (accumulator[key] || 0) + 1;
+    return accumulator;
+  }, {});
+
+  const dominantCategory = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || "mixed";
+
+  return [
+    `Dataset pattern: ${shortDurationCount} of ${products.length} instruments are short-duration, so flexibility is a recurring theme across the catalog.`,
+    `Dataset pattern: ${highLiquidityCount} products score high on liquidity, creating a strong bias toward quick-access instruments.`,
+    `Dataset pattern: ${driverLabel(dominantCategory)} appears most frequently in the catalog mix, shaping the recommendation distribution.`,
+  ];
+}
+
 function buildIntelligenceNarrative(recommendation, alternatives, userProfile) {
   const nextBest = alternatives?.[0];
   if (!nextBest) {
@@ -68,7 +118,7 @@ function buildIntelligenceNarrative(recommendation, alternatives, userProfile) {
   return `This option leads by +${scoreGap} over the next candidate, primarily driven by stronger ${driverLabel(dominantDriver)} in the weighted model.`;
 }
 
-export default function TopRecommendationCard({ recommendation, alternatives = [], userProfile }) {
+export default function TopRecommendationCard({ recommendation, alternatives = [], userProfile, products = [] }) {
   if (!recommendation) {
     return null;
   }
@@ -76,61 +126,87 @@ export default function TopRecommendationCard({ recommendation, alternatives = [
   const confidence = Math.max(0, Math.min(100, recommendation.confidence ?? 82));
   const confidenceBlocks = 10;
   const filledBlocks = Math.round((confidence / 100) * confidenceBlocks);
+  const systemInsight = buildSystemInsight(recommendation, userProfile);
   const intelligenceNarrative = buildIntelligenceNarrative(recommendation, alternatives, userProfile);
+  const behavioralSegment = buildBehavioralSegment(userProfile);
+  const datasetPatterns = buildDatasetPatterns(products);
 
   return (
-    <section className="surface-accent relative rounded-[2rem] border-l-4 border-cyan-300 p-7 shadow-[0_0_0_1px_rgba(103,232,249,0.24),0_40px_130px_rgba(8,145,178,0.22)] animate-reveal lg:translate-y-1">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_24%,transparent_74%,rgba(255,255,255,0.03))]" />
-      <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">[ Decision Output ]</p>
+    <section className="surface-accent tone-cyan decision-glow section-rail-cyan relative rounded-[2rem] border-l-4 border-cyan-400 p-7 animate-reveal lg:translate-y-1">
+      <p className="text-xs uppercase tracking-widest text-cyan-400">[ Decision Output ]</p>
 
       <div className="mt-3 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-sm uppercase tracking-[0.28em] text-slate-400">System selected</p>
-          <h2 className="brand-display text-6xl font-semibold text-cyan-100 md:text-7xl">{recommendation.productName}</h2>
-          <p className="mt-1 text-sm text-slate-300">{humanizeValue(recommendation.category)} • Score {recommendation.score}</p>
+          <p className="text-sm uppercase tracking-[0.28em] text-[#9fb3c8]">System selected</p>
+          <h2 className="brand-display text-3xl font-bold text-cyan-300 md:text-5xl">{recommendation.productName}</h2>
+          <p className="mt-1 text-sm text-[#9fb3c8]">{humanizeValue(recommendation.category)} • Score {recommendation.score}</p>
         </div>
         <div className="text-right">
-          <p className="text-sm font-semibold text-emerald-300">
+          <p className="text-sm font-semibold text-[#00ff9f]">
             Confidence: {"█".repeat(filledBlocks)}{"░".repeat(confidenceBlocks - filledBlocks)} {confidence}%
           </p>
-          <p className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-400">Model certainty indicator</p>
+          <p className="mt-1 text-xs uppercase tracking-[0.2em] text-[#9fb3c8]">Model certainty indicator</p>
         </div>
       </div>
 
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
-        <div className="rounded-2xl border border-cyan-300/15 bg-cyan-300/8 p-4">
-          <p className="text-xs uppercase tracking-[0.28em] text-cyan-200">[ Why This Was Selected ]</p>
-          <ul className="mt-3 space-y-2 text-sm text-slate-100">
-          {(recommendation.reasons || []).slice(0, 3).map((reason, index) => (
-              <li key={`${recommendation.productId}-reason-${index}`} className="flex gap-2">
-                <span className="text-cyan-300">→</span>
-                <span>{reason}</span>
-              </li>
-          ))}
+        <div className="py-1">
+          <p className="text-xs uppercase tracking-widest text-cyan-400">[ DECISION RATIONALE ]</p>
+          <ul className="mt-3 space-y-2 text-sm text-[#e6edf3]">
+            <li className="flex gap-2">
+              <span className="text-cyan-300">✔</span>
+              <span>Liquidity requirement ({userProfile?.liquidityNeed || "current"}) strongly matches product flexibility.</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-cyan-300">✔</span>
+              <span>Investment horizon aligns with short-duration structure.</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-cyan-300">✔</span>
+              <span>Return optimized within {userProfile?.riskLevel || "current"}-risk constraint.</span>
+            </li>
           </ul>
         </div>
 
-        <div className="rounded-2xl border border-amber-400/20 bg-amber-400/10 p-4">
-          <p className="text-xs uppercase tracking-[0.28em] text-amber-200">[ Trade-off Analysis ]</p>
-          <ul className="mt-3 space-y-2 text-sm text-amber-100">
-          {(recommendation.tradeoffs || [recommendation.tradeOff]).map((item, index) => (
+        <div className="rounded-2xl border border-[#ffb020]/20 bg-[#ffb020]/10 p-4 section-rail-warning">
+          <p className="text-xs uppercase tracking-widest text-[#ffb020]">[ Trade-off Analysis ]</p>
+          <ul className="mt-3 space-y-2 text-sm text-[#ffb020]">
+            {(recommendation.tradeoffs || [recommendation.tradeOff]).map((item, index) => (
               <li key={`${recommendation.productId}-tradeoff-${index}`} className="flex gap-2">
-                <span className="text-amber-200">!</span>
+                <span className="text-[#ffb020]">!</span>
                 <span>{item}</span>
               </li>
-          ))}
+            ))}
           </ul>
         </div>
       </div>
 
-      <div className="mt-4 rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-4">
-        <p className="text-xs uppercase tracking-[0.28em] text-cyan-200">[ Behavioral Insight Layer ]</p>
-        <p className="mt-2 text-sm text-slate-100">{recommendation.insight}</p>
+      <div className="mt-5 border-t border-cyan-500/20 pt-4">
+        <p className="text-xs uppercase tracking-widest text-cyan-400">[ Behavioral Segmentation ]</p>
+        <p className="mt-2 text-sm text-[#e6edf3]">{behavioralSegment}</p>
+        <p className="mt-2 text-sm text-[#9fb3c8]">This profile is grouped with users who prioritize the same decision trade-offs.</p>
       </div>
 
-      <div className="mt-4 rounded-2xl border border-emerald-300/20 bg-emerald-300/10 p-4">
-        <p className="text-xs uppercase tracking-[0.28em] text-emerald-200">[ Non-Obvious Intelligence ]</p>
-        <p className="mt-2 text-sm text-emerald-50">{intelligenceNarrative}</p>
+      <div className="mt-4 rounded-2xl border border-cyan-500/20 bg-[#0f1821] p-4 section-rail-green">
+        <p className="text-xs uppercase tracking-widest text-[#00ff9f]">[ Dataset Pattern Detection ]</p>
+        <ul className="mt-3 space-y-2 text-sm text-[#e6edf3]">
+          {datasetPatterns.map((pattern, index) => (
+            <li key={index} className="flex gap-2">
+              <span className="text-cyan-300">→</span>
+              <span>{pattern}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-4 rounded-2xl border border-cyan-500/20 bg-[#0f1821] p-4 section-rail-green">
+        <p className="text-xs uppercase tracking-widest text-[#00ff9f]">[ System Insight ]</p>
+        <p className="mt-2 text-sm text-[#e6edf3]">{systemInsight}</p>
+      </div>
+
+      <div className="mt-4 rounded-2xl border border-cyan-500/20 bg-[#0f1821] p-4 section-rail-green">
+        <p className="text-xs uppercase tracking-widest text-[#00ff9f]">[ Non-Obvious Intelligence ]</p>
+        <p className="mt-2 text-sm text-[#e6edf3]">{intelligenceNarrative}</p>
       </div>
     </section>
   );

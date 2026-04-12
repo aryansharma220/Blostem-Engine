@@ -37,13 +37,13 @@ const options = {
 
 function SelectField({ label, name, value, onChange, values }) {
   return (
-    <label className="flex flex-col gap-2 text-sm font-medium text-slate-200">
+    <label className="flex flex-col gap-2 text-sm font-medium text-[#e6edf3]">
       {label}
       <select
         name={name}
         value={value}
         onChange={onChange}
-        className="surface-input rounded-2xl p-3 text-sm shadow-sm shadow-cyan-950/10 outline-none transition"
+        className="surface-input rounded-2xl p-3 text-sm outline-none transition-all duration-300 ease-in-out"
         aria-label={label}
       >
         {values.map((item) => (
@@ -73,7 +73,7 @@ export default function ProfileForm({ onSubmit, loading }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-cyan-950/15 backdrop-blur-xl md:p-5">
+    <form onSubmit={handleSubmit} className="surface-shell grid gap-4 rounded-[2rem] p-4 md:p-5">
       <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-cyan-300">
@@ -82,7 +82,7 @@ export default function ProfileForm({ onSubmit, loading }) {
           </p>
           <h2 className="mt-2 text-2xl font-semibold text-white">Shape the recommendation lens</h2>
         </div>
-        <p className="text-sm text-slate-300">6 inputs, one ranked decision set</p>
+        <p className="text-sm text-[#9fb3c8]">6 inputs, one ranked decision set</p>
       </div>
 
       <div className="grid gap-3 md:grid-cols-2">
@@ -96,7 +96,7 @@ export default function ProfileForm({ onSubmit, loading }) {
       <button
         type="submit"
         disabled={loading}
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200 disabled:cursor-not-allowed disabled:bg-slate-500"
+        className="inline-flex items-center justify-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-400 px-5 py-3 text-sm font-semibold text-[#05070a] transition-all duration-300 ease-in-out hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-[#2a323b]"
       >
         <Icon name="spark" className="h-4 w-4" />
         {loading ? "Analyzing..." : "Get Recommendations"}

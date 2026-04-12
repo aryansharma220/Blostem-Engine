@@ -5,8 +5,8 @@ function FlowNode({ label, detail, icon, active = false }) {
     <div
       className={`min-w-0 flex-1 rounded-2xl border px-4 py-3 text-left transition ${
         active
-          ? "border-cyan-300/35 bg-cyan-300/12 shadow-[0_0_24px_rgba(103,232,249,0.16)]"
-          : "border-white/10 bg-white/5"
+            ? "border-cyan-500/30 bg-cyan-500/10"
+            : "border-cyan-500/20 bg-[#0b1117]"
       }`}
     >
       <p className="flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-cyan-200">
@@ -33,12 +33,12 @@ export default function DecisionFlowStrip({ recommendation, segmentLabel }) {
 
   return (
     <section className="surface-shell rounded-[2rem] p-5 animate-reveal">
-      <div className="flex flex-col gap-2 border-b border-white/10 pb-4 md:flex-row md:items-end md:justify-between">
+      <div className="flex flex-col gap-2 border-b border-cyan-500/20 pb-4 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">[ System Processing ]</p>
           <h2 className="mt-2 text-2xl font-semibold text-white">System reasoning flow</h2>
         </div>
-        <p className="text-sm text-slate-300">Segment: {segmentLabel}</p>
+        <p className="text-sm text-[#9fb3c8]">Segment: {segmentLabel}</p>
       </div>
 
       <div className="mt-5 grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] md:items-stretch">

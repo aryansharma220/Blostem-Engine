@@ -207,19 +207,16 @@ export default function App() {
   const heroStats = useMemo(() => buildHeroStats(products, recommendations), [products, recommendations]);
 
   return (
-    <main className="relative mx-auto min-h-screen max-w-7xl overflow-hidden px-4 py-8 text-slate-100 md:px-8">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.12),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(14,165,233,0.12),_transparent_28%),linear-gradient(135deg,_#020617,_#08111f_48%,_#02050c)]" />
-      <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:42px_42px]" />
+    <div className="relative min-h-screen">
       <SignatureBackdrop />
 
-      <div className="relative z-10 grid gap-6">
-        <header className="surface-shell relative grid gap-6 rounded-[2rem] p-6 backdrop-blur-2xl md:p-8">
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_26%,transparent_74%,rgba(255,255,255,0.05))]" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,transparent,rgba(2,6,23,0.55))]" />
+      <main className="relative z-10 mx-auto min-h-screen max-w-7xl px-4 py-8 text-[#e6edf3] md:px-8">
+        <div className="grid gap-6">
+        <header className="surface-shell relative grid gap-6 rounded-[2rem] p-6 md:p-8">
           <div className="grid gap-3 lg:grid-cols-[1.4fr_0.8fr] lg:items-end">
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-3 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-[11px] uppercase tracking-[0.35em] text-cyan-200 animate-reveal">
-                <span className="inline-block h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_24px_rgba(103,232,249,0.8)]" />
+              <div className="inline-flex items-center gap-3 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-[11px] uppercase tracking-[0.35em] text-cyan-400 animate-reveal">
+                <span className="inline-block h-2 w-2 rounded-full bg-cyan-400" />
                 Blostem Insight Engine
               </div>
               <h1
@@ -227,25 +224,25 @@ export default function App() {
               >
                 A premium decision oracle for financial products.
               </h1>
-              <p className="max-w-2xl text-sm leading-6 text-slate-300 md:text-base animate-reveal" style={{ animationDelay: "120ms" }}>
+              <p className="max-w-2xl text-sm leading-6 text-[#9fb3c8] md:text-base animate-reveal" style={{ animationDelay: "120ms" }}>
                 Enter your profile and the engine scores a curated product universe, surfaces the best matches, and explains the trade-offs with clarity.
               </p>
-              <p className="max-w-3xl text-xs uppercase tracking-[0.18em] text-cyan-200/90 animate-reveal" style={{ animationDelay: "180ms" }}>
+              <p className="max-w-3xl text-xs uppercase tracking-[0.18em] text-cyan-400/90 animate-reveal" style={{ animationDelay: "180ms" }}>
                 This system evaluates financial instruments using a weighted decision model to generate optimal matches for user profiles.
               </p>
             </div>
-            <div className="surface-accent rounded-3xl p-4 backdrop-blur-2xl animate-reveal">
-              <p className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-cyan-200">
+            <div className="surface-accent rounded-3xl p-4 animate-reveal">
+              <p className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-cyan-400">
                 <Icon name="spark" className="h-4 w-4" />
                 Live system state
               </p>
               <p className="mt-2 text-lg font-medium text-white animate-pulse">
                 {catalogLoading ? "Loading product universe..." : "Product universe ready."}
               </p>
-              <p className="mt-2 text-sm text-slate-300">
+              <p className="mt-2 text-sm text-[#9fb3c8]">
                 Deterministic scoring, explainable ranking, and premium presentation in one flow.
               </p>
-              <p className="mt-2 text-xs uppercase tracking-[0.2em] text-cyan-200/90">
+              <p className="mt-2 text-xs uppercase tracking-[0.2em] text-cyan-400/90">
                 Designed as a decision layer for fintech platforms to convert product data into actionable recommendations.
               </p>
             </div>
@@ -255,10 +252,10 @@ export default function App() {
             {heroStats.map((item, index) => (
               <div
                 key={item.label}
-                className="surface-soft rounded-2xl p-4 animate-reveal transition-transform duration-300 hover:-translate-y-1"
+                className="surface-soft rounded-2xl p-4 animate-reveal transition-all duration-300 ease-in-out hover:-translate-y-1"
                 style={{ animationDelay: `${index * 120}ms` }}
               >
-                <p className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-slate-400">
+                <p className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-cyan-400">
                   <Icon name={item.icon} className="h-4 w-4 text-cyan-300" />
                   {item.label}
                 </p>
@@ -271,7 +268,7 @@ export default function App() {
         <section className="grid gap-6">
           <ProfileForm onSubmit={handleSubmit} loading={loading} />
           {error ? (
-            <p className="rounded-2xl border border-rose-500/20 bg-rose-500/10 p-4 text-sm text-rose-100">
+            <p className="rounded-2xl border border-[#ffb020]/20 bg-[#ffb020]/10 p-4 text-sm text-[#ffb020]">
               {error}
             </p>
           ) : null}
@@ -286,12 +283,12 @@ export default function App() {
           {submittedProfile ? (
             <Suspense
               fallback={
-                <div className="grid gap-4 rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                <div className="grid gap-4 rounded-[2rem] border border-cyan-500/20 bg-[#0b1117] p-6">
                   <div className="h-10 w-56 animate-pulse rounded-full bg-white/10" />
                   <div className="grid gap-4 md:grid-cols-3">
-                    <div className="h-64 animate-pulse rounded-[2rem] bg-white/5" />
-                    <div className="h-64 animate-pulse rounded-[2rem] bg-white/5" />
-                    <div className="h-64 animate-pulse rounded-[2rem] bg-white/5" />
+                    <div className="h-64 animate-pulse rounded-[2rem] bg-[#0f1a22]" />
+                    <div className="h-64 animate-pulse rounded-[2rem] bg-[#0f1a22]" />
+                    <div className="h-64 animate-pulse rounded-[2rem] bg-[#0f1a22]" />
                   </div>
                 </div>
               }
@@ -316,7 +313,8 @@ export default function App() {
             </Suspense>
           ) : null}
         </section>
-      </div>
-    </main>
+        </div>
+      </main>
+    </div>
   );
 }
