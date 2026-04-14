@@ -7,7 +7,7 @@ import DecisionFlowStrip from "./components/DecisionFlowStrip";
 import { getProducts, getRecommendations } from "./services/api";
 
 const ResultsPage = lazy(() => import("./pages/ResultsPage"));
-const TIMELINE_KEY = "blostem.compare.timeline";
+const TIMELINE_KEY = "deciora.compare.timeline";
 
 function shiftChoice(value, values, direction = 1) {
   const currentIndex = values.indexOf(value);
@@ -217,7 +217,7 @@ export default function App() {
             <div className="space-y-3">
               <div className="inline-flex items-center gap-3 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-[11px] uppercase tracking-[0.35em] text-cyan-400 animate-reveal">
                 <span className="inline-block h-2 w-2 rounded-full bg-cyan-400" />
-                Blostem Insight Engine
+                Deciora
               </div>
               <h1
                 className="brand-display max-w-3xl text-4xl font-semibold tracking-tight text-white md:text-6xl animate-reveal"

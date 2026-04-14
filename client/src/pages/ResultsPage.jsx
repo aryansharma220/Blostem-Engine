@@ -86,7 +86,7 @@ export default function ResultsPage({
     };
 
     doc.setFontSize(16);
-    line("Blostem Insight Engine - Recommendation Report", 9);
+    line("Deciora - Recommendation Report", 9);
     doc.setFontSize(11);
     line(`Segment: ${segmentLabel}`);
     line(`Products evaluated: ${metadata?.totalProductsEvaluated ?? 0}`);
@@ -126,7 +126,7 @@ export default function ResultsPage({
       });
     }
 
-    doc.save("blostem-report.pdf");
+    doc.save("deciora-report.pdf");
   };
 
   return (

@@ -1,8 +1,8 @@
-# Blostem Insight Engine (MVP)
+# Deciora (MVP)
 
 ## Overview
 
-Blostem Insight Engine is a decision-support system that converts user financial preferences and raw product data into **ranked, explainable financial recommendations**.
+Deciora is a decision-support system that converts user financial preferences and raw product data into **ranked, explainable financial recommendations**.
 
 This is not a dashboard or chatbot. It is a **decision engine** designed to:
 
@@ -348,7 +348,7 @@ Build **Track 03: Data Analytics & Insights**. It is the cleanest fit for a one-
 
 ## Project title
 
-**Blostem Insight Engine**
+**Deciora**
 
 ## One-line product definition
 
@@ -764,6 +764,6 @@ That kind of build looks shallow and usually loses to a narrower but better-exec
 
 # Final recommendation
 
-Build **Blostem Insight Engine** as a **decision engine with explainability**, not as a dashboard and not as a chatbot. That is the highest-probability shortlist strategy for a one-week build under this rule set. 
+Build **Deciora** as a **decision engine with explainability**, not as a dashboard and not as a chatbot. That is the highest-probability shortlist strategy for a one-week build under this rule set. 
 
 If you need the next step, I will turn this into a **complete PRD + folder structure + API contract + 7-day execution checklist**.

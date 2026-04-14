@@ -1,6 +1,6 @@
-# Blostem Insight Engine
+# Deciora
 
-Blostem Insight Engine is an explainable fintech decision system that transforms user preferences and product data into ranked, defensible recommendations with explicit trade-off reasoning.
+Deciora is an explainable fintech decision system that transforms user preferences and product data into ranked, defensible recommendations with explicit trade-off reasoning.
 
 ## Problem Statement
 
@@ -14,7 +14,7 @@ In short, most systems show options. Very few systems make and explain decisions
 
 ## Solution Overview
 
-Blostem is designed as a decision layer, not a static dashboard.
+Deciora is designed as a decision layer, not a static dashboard.
 
 High-level flow:
 
@@ -135,7 +135,7 @@ This helps users understand not only what to choose, but why the model chose it.
 
 ## Scalability and Real-World Applicability
 
-Blostem is designed to map into production fintech workflows:
+Deciora is designed to map into production fintech workflows:
 
 - Banking and neo-banking recommendation flows
 - Wealth advisory pre-screening experiences
@@ -237,4 +237,4 @@ Next improvements:
 
 ## Final Positioning
 
-Blostem demonstrates how decision engines can replace static product listings with intelligent, explainable, and operationally trustworthy financial recommendations.
+Deciora demonstrates how decision engines can replace static product listings with intelligent, explainable, and operationally trustworthy financial recommendations.
