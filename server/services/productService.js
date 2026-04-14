@@ -1,4 +1,7 @@
-import products from "../data/products.json" with { type: "json" };
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+const products = require("../data/products.json");
 
 export function getAllProducts() {
   return products;
