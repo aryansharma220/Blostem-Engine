@@ -3,9 +3,18 @@
   "installCommand": "npm run install:all",
   "buildCommand": "npm run build:client",
   "outputDirectory": "client/dist",
+  "functions": {
+    "api/**/*.js": {
+      "includeFiles": "server/**"
+    }
+  },
   "rewrites": [
     {
       "source": "/favicon.ico",
+      "destination": "/favicon.svg"
+    },
+    {
+      "source": "/api/favicon.ico",
       "destination": "/favicon.svg"
     }
   ]
