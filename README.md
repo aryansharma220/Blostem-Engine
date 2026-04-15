@@ -1,5 +1,7 @@
 # Deciora
 
+https://github.com/user-attachments/assets/6a16d785-ff95-4a5d-af14-3ff41f053c70
+
 Deciora is an explainable fintech decision system that transforms user preferences and product data into ranked, defensible recommendations with explicit trade-off reasoning.
 
 ## Problem Statement
